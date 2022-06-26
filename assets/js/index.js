@@ -1,14 +1,22 @@
 'use strict'
 
-const myButton = document.querySelectorAll("button");
-const container = document.getElementById("container");
+const btns = document.querySelectorAll('.btn');
+const containerWrap = document.querySelector('.container-wrap');
 
-for (const btn of myButton) {
-  btn.addEventListener("click",({target: {dataset: { color },},target,}) => {
-      container.style.backgroundColor
-      = color;
+for (const btn of btns) {
+  btn.addEventListener('click', ({ target: { dataset: { flex } }, target }) => {
+    containerWrap.style.flexDirection = flex;
+    activeButton(target);
+  })
+}
+
+function activeButton(target) {
+  for (const btn of btns) {
+    btn.classList.remove('btn-active');
+    if (btn === target) {
+      btn.classList.add('btn-active');
     }
-  );
+  }
 }
 
 
@@ -21,19 +29,3 @@ for (const btn of myButton) {
 
 
 
-// const myButton = document.querySelectorAll("div>button");
-// const container = document.getElementById("container");
-
-// for (const btn of myButton) {
-//   btn.addEventListener(
-//     "click",
-//     ({
-//       target: {
-//         dataset: { color },
-//       },
-//       target,
-//     }) => {
-//       container.style.backgroundColor = color;
-//     }
-//   );
-// }
